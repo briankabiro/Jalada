@@ -1,9 +1,6 @@
-import Link from 'next/link'
-import Header from '../component/header'
-
 const Index = () => (
 	<div>
-		<Header />
+		<p>Wleve man </p>
 	</div>
 )
 export default Index

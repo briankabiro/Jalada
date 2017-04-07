@@ -1,9 +1,0 @@
-pages = {
-	homepage
-	writing page
-	story page
-
-	login
-	signup
-	account page
-}
