@@ -1,13 +1,13 @@
 import Link from 'next/link'
 export default () => (
 	<div>
-		<h4>Login</h4>
+		<h4>Create Account</h4>
 		<p>username: <input type="text" /><br/>
 		password: <input type="password" /></p>
-		<button>login</button>
-		<p>Don't have an account?
-			<Link href="/signup">
-				<a>Create Account</a>
+		<button>Create Account</button>
+		<p>Already have an account?
+			<Link href="/login">
+				<a>Login here</a>
 			</Link>
 		</p>
 		<style jsx>{`
