@@ -8,13 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _header = require('../components/header');
+var _page = require('../components/page');
 
-var _header2 = _interopRequireDefault(_header);
-
-var _meta = require('../components/meta');
-
-var _meta2 = _interopRequireDefault(_meta);
+var _page2 = _interopRequireDefault(_page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,21 +19,11 @@ var _jsxFileName = 'C:\\Users\\Brain\\Desktop\\dev.to\\Projects\\Jalada\\pages\\
 
 
 var Index = function Index() {
-	return _react2.default.createElement('div', {
+	return _react2.default.createElement(_page2.default, {
 		__source: {
 			fileName: _jsxFileName,
-			lineNumber: 6
+			lineNumber: 5
 		}
-	}, _react2.default.createElement(_meta2.default, {
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 7
-		}
-	}), _react2.default.createElement(_header2.default, {
-		__source: {
-			fileName: _jsxFileName,
-			lineNumber: 8
-		}
-	}));
+	});
 };
 exports.default = Index;

@@ -9,7 +9,7 @@ export default () => (
 					<span className="logo">
 						<Logo />
 					</span>
-					<span className="title">Waraka</span>
+					<span className="title">Jalada</span>
 				</a>
 			</Link>
 		</div>
@@ -17,7 +17,7 @@ export default () => (
 				<Link href="/login">
 					<a className="login">login</a>
 				</Link>
-				<Link>
+				<Link href="/signup">
 					<a className="signup">
 						sign up
 					</a>
@@ -25,8 +25,11 @@ export default () => (
 			</div>
 
 		<style jsx>{`
+			*{
+				color:white;
+			}
 			header{
-				background: #ffa52a;
+				background: black;
 				display:flex;
 				font-size:14px;
 			}
@@ -41,6 +44,9 @@ export default () => (
 			.right{
 				flex:1;
 				text-align:right;
+				display:flex;
+				align-items:center;	
+				justify-content:space-between;
 			}
 			.title{
 				font-weight:bold;
@@ -48,22 +54,19 @@ export default () => (
 				font-size:14px;
 				text-decoration:none;
 				padding: 8px 10px 8px 4px;
-				color: #000;
+				color: white;
 				vertical-align: top;
 			}
 
-			a.login{
-				padding: 10px;
-				display: inline-block;
+			a.login, a.signup{
 				font-size:11px;
 				text-transform: uppercase;
 				text-decoration:none;
-				color:#000;
+				color:white;
 			}
-			.login:hover{
-				color:#fff;
+			.login:hover .signup:hover{
+				color:blue;
 			}
-
 			.nav{
 				display:inline-block;
 				vertical-align:top

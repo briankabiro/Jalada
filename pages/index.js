@@ -1,11 +1,7 @@
 //header, meta, nav, page js
-import Header from '../components/header'
-import Meta from '../components/meta'
+import Page from '../components/page'
 
 const Index = () => (
-	<div>
-		<Meta />
-		<Header />
-	</div>
+	<Page />
 )
 export default Index
