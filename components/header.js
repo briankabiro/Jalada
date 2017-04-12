@@ -22,6 +22,9 @@ export default () => (
 						sign up
 					</a>
 				</Link>
+				<Link href="/editor">
+					<a className="editor">Editor</a>
+				</Link>
 			</div>
 
 		<style jsx>{`
