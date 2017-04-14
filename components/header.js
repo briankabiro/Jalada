@@ -35,6 +35,7 @@ export default () => (
 				background: black;
 				display:flex;
 				font-size:14px;
+				height:3em;			
 			}
 			.logo{
 				margin: 4px 5px 2px 4px;

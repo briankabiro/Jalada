@@ -15,6 +15,7 @@ export default ({ children }) => (
 			width:85%;
 			margin:auto;
 			padding:10px 0 0 0;
+			background-color:white;
 		}
 		.page{
 			color:#828282;
