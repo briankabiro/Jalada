@@ -1,15 +1,35 @@
-import React from 'react';
-import {Editor, EditorState} from 'draft-js';
+import {Editor} from 'slate'
+import React from 'react'
 
-export default class MyEditor extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {editorState: EditorState.createEmpty()};
-    this.onChange = (editorState) => this.setState({editorState});
+const initialState= Raw.deserialize({
+  nodes:[
+    {
+      kind:'block',
+      type:'paragraph',
+      nodes:[
+        {
+          kind:'text',
+          text:'A line of text in a paragraph'
+        }
+      ]
+    }
+  ]
+}, {terse: true})
+
+class App extends React.Component{
+  state = {
+    state: initialState
   }
-  render() {
+  onChange = (state) => {
+    this.setState({state})
+  }
+
+  render = () => {
     return (
-        <Editor editorState={this.state.editorState} onChange={this.onChange} />
-    );
+      <Editor
+        state={this.state.state}
+        onChange={this.onChange}
+       />
+    )
   }
 }
