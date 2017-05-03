@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _editor = require('..components/editor');
+var _editor = require('../components/editor');
 
 var _editor2 = _interopRequireDefault(_editor);
 
