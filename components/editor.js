@@ -20,26 +20,46 @@ function CodeNode(props){
   return <pre {...props.attributes}><code>{props.children}</code></pre>
 }
 
+function BoldMark(props){
+  return <strong>{props.children}</strong>
+}
+
 export default class App extends React.Component{
   state = {
-    state: initialState
+    state: initialState,
+    schema:{
+      nodes:{
+        code: CodeNode
+      },
+      marks:{
+        bold: BoldMark
+      }
+    }    
   }
-  schema:{
-    nodes:{
-      code: CodeNode
-    }
-  }
+
   onChange = (state) => {
     this.setState({state})
   }
   onKeyDown = (event, data, state) => {
-    if(event.which != 192 || !event.metaKey) return
-      event.preventDefault();
-    const isCode = state.blocks.some(block => block.type == 'code')
-      return state
-      .transform()
-      .setBlock(isCode? 'paragraph' : 'code')
-      .apply()
+      if (!event.metaKey) return
+        switch(event.which){
+          case 66:{
+            event.preventDefault();
+            return state
+            .transform()
+            .addMark('bold')
+            .apply()
+          }
+          case 192:{
+            const isCode = state.blocks.some(block => block.type == 'code')
+            event.preventDefault();
+            return state
+            .transform()
+            .setBlock(isCode ? 'paragraph' : 'code')
+            .apply()            
+          }
+        }
+    
 }
 
   render = () => {

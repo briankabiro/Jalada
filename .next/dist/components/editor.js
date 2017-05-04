@@ -60,6 +60,15 @@ function CodeNode(props) {
   }, props.children));
 }
 
+function BoldMark(props) {
+  return _react2.default.createElement('strong', {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    }
+  }, props.children);
+}
+
 var App = function (_React$Component) {
   (0, _inherits3.default)(App, _React$Component);
 
@@ -75,16 +84,34 @@ var App = function (_React$Component) {
     }
 
     return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = App.__proto__ || (0, _getPrototypeOf2.default)(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      state: initialState
+      state: initialState,
+      schema: {
+        nodes: {
+          code: CodeNode
+        },
+        marks: {
+          bold: BoldMark
+        }
+      }
     }, _this.onChange = function (state) {
       _this.setState({ state: state });
     }, _this.onKeyDown = function (event, data, state) {
-      if (event.which != 192 || !event.metaKey) return;
-      event.preventDefault();
-      var isCode = state.blocks.some(function (block) {
-        return block.type == 'code';
-      });
-      return state.transform().setBlock(isCode ? 'paragraph' : 'code').apply();
+      if (!event.metaKey) return;
+      switch (event.which) {
+        case 66:
+          {
+            event.preventDefault();
+            return state.transform().addMark('bold').apply();
+          }
+        case 192:
+          {
+            var isCode = state.blocks.some(function (block) {
+              return block.type == 'code';
+            });
+            event.preventDefault();
+            return state.transform().setBlock(isCode ? 'paragraph' : 'code').apply();
+          }
+      }
     }, _this.render = function () {
       return _react2.default.createElement(_slate.Editor, {
         schema: _this.state.schema,
@@ -93,7 +120,7 @@ var App = function (_React$Component) {
         onKeyDown: _this.onKeyDown,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 67
         }
       });
     }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
