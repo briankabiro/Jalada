@@ -25,6 +25,7 @@ function BoldMark(props){
 }
 
 export default class App extends React.Component{
+  
   state = {
     state: initialState,
     schema:{
@@ -32,34 +33,36 @@ export default class App extends React.Component{
         code: CodeNode
       },
       marks:{
-        bold: BoldMark
+        bold:BoldMark
       }
     }    
   }
 
   onChange = (state) => {
-    this.setState({state})
+    this.setState({ state })
   }
+
   onKeyDown = (event, data, state) => {
-      if (!event.metaKey) return
-        switch(event.which){
-          case 66:{
-            event.preventDefault();
-            return state
-            .transform()
-            .addMark('bold')
-            .apply()
-          }
-          case 192:{
-            const isCode = state.blocks.some(block => block.type == 'code')
-            event.preventDefault();
-            return state
-            .transform()
-            .setBlock(isCode ? 'paragraph' : 'code')
-            .apply()            
-          }
+    if (!event.metaKey) return
+
+      switch (event.which){
+        case 66: {
+          event.preventDefault()
+          return state
+          .transform()
+          .toggleMark('bold')
+          .apply()
         }
-    
+
+        case 192: {
+          const isCode = state.blocks.some(block => block.type == 'code')
+            event.preventDefault()
+            return state
+            .transform()
+            .setBlock(isCode ? 'paragraph':'code')
+            .apply()
+        }
+     }
 }
 
   render = () => {

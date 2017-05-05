@@ -1,3 +1,4 @@
 //header, meta, nav, page js
-import App from '../components/editor'
+import App from '../components/page'
 export default App;
+

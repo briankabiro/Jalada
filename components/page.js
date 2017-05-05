@@ -11,12 +11,17 @@ import Meta from './meta'
 	style about page
 
 */
-export default ({ children }) => (
+export default () => (
 	<div className="main">
 		<Meta />
 		<Header />
 	<div className="page">
-		{children}
+		<div className="content">
+			<h3>Stories</h3>
+		</div>
+		<div className="sideMenu">
+
+		</div>
 	</div>
 
 	<style jsx>{`
@@ -30,6 +35,22 @@ export default ({ children }) => (
 			color:#828282;
 			background: #fff;
 			padding: 3px 10px;
+			display:flex;
+			justify-content:space-around;
+		}
+		.content{
+			flex:5;
+			height:35em;
+			border:1px solid grey;
+		}
+		.content h3{
+			color:grey;
+			padding:0.5em;
+		}
+		.sideMenu{
+			flex:2;
+			height:20em;
+			border:1px solid aliceblue;
 		}
 
 		@media (max-width: 750px) {

@@ -4,10 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _editor = require('../components/editor');
+var _page = require('../components/page');
 
-var _editor2 = _interopRequireDefault(_editor);
+var _page2 = _interopRequireDefault(_page);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _editor2.default; //header, meta, nav, page js
+exports.default = _page2.default; //header, meta, nav, page js

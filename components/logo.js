@@ -3,9 +3,9 @@ export default () => (
 		J
 		<style jsx>{`
 			span {
-				border: 1px solid #fff;
+				border: 1px solid blue;
 				display: inline-block;
-				color:white;
+				color:blue;
 				font-weight: bold;
 				font-size: 11px;
 				padding: 5px 8px;

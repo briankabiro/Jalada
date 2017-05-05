@@ -1,79 +1,67 @@
 import Link from 'next/link'
 import Logo from './logo'
-
+//add box shadow to header
 export default () => (
 	<header>
 		<div className="left">
 			<Link prefetch href="/">
-				<a>
-					<span className="logo">
-						<Logo />
-					</span>
+				<a>	
 					<span className="title">Jalada</span>
 				</a>
 			</Link>
 		</div>
 			<div className="right">
+				<Link href="/editor">
+					<a className="editor">Write</a>
+				</Link>				
 				<Link href="/login">
-					<a className="login">login</a>
+					<a className="login">Login</a>
 				</Link>
 				<Link href="/signup">
 					<a className="signup">
-						sign up
+						Sign up
 					</a>
 				</Link>
-				<Link href="/editor">
-					<a className="editor">Editor</a>
-				</Link>
+				<Link href="/about">
+					<a className="about">
+						About Us
+					</a>
+				</Link>				
 			</div>
 
 		<style jsx>{`
-			*{
-				color:white;
-			}
 			header{
-				background: black;
 				display:flex;
-				font-size:14px;
-				height:3em;			
+				padding:0.5em;	
 			}
-			.logo{
-				margin: 4px 5px 2px 4px;
-				display: inline-block;
-			}
-
 			.left{
-				flex:9;
+				flex:7;
 			}
 			.right{
-				flex:1;
+				flex:3;
 				text-align:right;
 				display:flex;
 				align-items:center;	
-				justify-content:space-between;
+				justify-content:space-around;
 			}
 			.title{
 				font-weight:bold;
 				display: inline-block;
-				font-size:14px;
+				font-size:1.5em;
 				text-decoration:none;
-				padding: 8px 10px 8px 4px;
-				color: white;
-				vertical-align: top;
 			}
 
-			a.login, a.signup{
-				font-size:11px;
-				text-transform: uppercase;
+			a.login, a.signup, a.editor, a.about{
+				font-size:1.1em;
 				text-decoration:none;
-				color:white;
 			}
 			.login:hover .signup:hover{
-				color:blue;
+				color:black;
 			}
-			.nav{
-				display:inline-block;
-				vertical-align:top
+			@media (max-width: 750px){
+				.title{
+					font-sizr:1.5em
+				}
 			}
 		`}</style>
 	</header>
