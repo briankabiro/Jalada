@@ -1,5 +1,7 @@
+import Header from '../components/header'
 export default () => (
 	<div className="container">
+		<Header />
 		<div id="content">
 			<h2>About</h2>
 				<p>
