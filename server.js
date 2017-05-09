@@ -6,8 +6,9 @@ const co = require('co')
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
-const MONGO_URL = 'mongodb://localhost:27017/test'
-//if error,check what co thingy does
+const MONGO_URL = 'mongodb://localhost:27017/test2'
+
+
 co(function * () {
   yield app.prepare()
     console.log('Connecting to ${MONGO_URL}')
