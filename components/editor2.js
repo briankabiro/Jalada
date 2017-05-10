@@ -9,7 +9,7 @@ const initialState = Raw.deserialize({
       nodes:[
         {
           kind:'text',
-          "text":"Click Here to Start Writing"
+          "text":"text"
         }
       ]
     }

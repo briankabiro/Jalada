@@ -1,6 +1,7 @@
 //header, meta, nav, page js
 import Header from './header'
 import Meta from './meta'
+import Stories from './stories'
 /*
 	Get posts and display them on frontpage
 	when clicked pass the post data as props
@@ -18,6 +19,7 @@ export default () => (
 	<div className="page">
 		<div className="content">
 			<h3>Stories</h3>
+			<Stories />
 		</div>
 		<div className="sideMenu">
 
