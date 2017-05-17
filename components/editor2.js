@@ -95,13 +95,61 @@ export default class Editor2 extends React.Component{
 
   render = () => {
     return (
-      <Editor
-        state={this.state.state}
-        onChange={this.onChange}
-        onKeyDown={this.onKeyDown}
-        placeholder={'Start writing'}
-        schema = {schema}
-       />
+      <div>
+        {this.renderToolbar()}
+        {this.renderEditor()}
+      </div>
     )
   }
+
+  renderEditor = () => {
+    return (
+      <div>
+        <Editor
+          state={this.state.state}
+          onChange={this.onChange}
+          onKeyDown={this.onKeyDown}
+          placeholder={'Start writing'}
+          schema = {schema}
+         />        
+      </div>
+    ) 
+  }
+
+  renderToolbar = () => {
+    return(
+      <div className= "menu toolbar-menu">
+        {this.renderMarkButton('bold', 'format_bold')}
+        {this.renderMarkButton('italic', 'format_italic')}
+        {this.renderMarkButton('underlined', 'format_underlined')}
+        {this.renderMarkButton('code', 'code')}
+        <style jsx>{`
+          .menu > * {
+            display:inline-block;
+          }    
+          .menu > * + * {
+            margin-left:15px;
+          }
+          .toolbar-menu{
+            padding: 1px 0 17px 18px;
+            margin:0 -20px;
+            margin-bottom:20px;
+            border-bottom: 2-x solid #eee;
+          }
+        `}
+        </style>
+        }
+      </div>
+    )
+  }
+
+  renderMarkButton = (type,icon) => {
+    const isActive = this.hasMark(type)
+    const onMouseDown = e => this.onClickMark(e, type)
+    return (
+      <span className="button" onMouseDown={onMouseDown} data-active={isActive}>
+        <span className="material-icons">{icon}</span>
+      </span>
+    )    
+  }  
 }
