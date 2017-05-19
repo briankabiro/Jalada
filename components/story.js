@@ -3,11 +3,12 @@ import React, {Component} from 'react'
 export default Story extends Component{
 	static async getInitialProps({req, query:{id}}){
 		const {db} = req;
-		const story = await db.collection('posts').find({"_id":id).toArray();
+		const story = await db.collection('posts').find(ObjectId(id)).toArray();
+		console.log("This is the story",story)
+		return story
 	}
 	constructor(props) {
 	  super(props);
-	
 	  this.state = {};
 	}
 	render(){

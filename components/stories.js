@@ -16,7 +16,7 @@ export default class Stories extends Component{
 					<ul>
 						{
 							list.map(story => (
-								<Link href={{pathname:'story', query:{id:story._id}}}>
+								<Link prefetch href={{pathname:'story', query:{id:story._id}}}>
 									<div className = "story" key={story._id}>
 										<h2>{story.title}</h2>
 										<p>{story.story}</p>

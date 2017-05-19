@@ -1,13 +1,17 @@
 import React from 'react'
-
+// install superagent and check what it does, install url-parse to get host and then append host to superagent to see if it still works.
 export default class extends React.Component{
 
 	static async getInitialProps({req, query:{id}}){
-		const {db} = req
-		console.log(db)
-		const story = await db.collection('posts').find({"_id":id}).toArray();
-		console.log(story)
-		return story
+		if(req){
+			const {db} = req
+			const story = await db.collection('posts').find({"_id":id}).toArray();
+			console.log(story)
+			return story				
+		}
+		const {story} = await superagent.get('http://localhost:3000/api')
+			.then(res => res.body)
+		return {list}
 	}
 	constructor(props) {
 	  super(props);
