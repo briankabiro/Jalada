@@ -36,9 +36,16 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _superagent = require('superagent');
+
+var superagent = _interopRequireWildcard(_superagent);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // install superagent and check what it does, install url-parse to get host and then append host to superagent to see if it still works.
+//add superagent route which receives id and then fetches that according to mongdb
 
 var _class = function (_React$Component) {
 	(0, _inherits3.default)(_class, _React$Component);
@@ -57,32 +64,36 @@ var _class = function (_React$Component) {
 						switch (_context.prev = _context.next) {
 							case 0:
 								if (!req) {
-									_context.next = 7;
+									_context.next = 8;
 									break;
 								}
 
 								db = req.db;
 								_context.next = 4;
-								return db.collection('posts').find({ "_id": id }).toArray();
+								return db.collection('posts').find({ "ObjectId": id }).toArray();
 
 							case 4:
 								_story = _context.sent;
 
 								console.log(_story);
-								return _context.abrupt('return', _story);
+								console.log("i am here");
+								return _context.abrupt('return', { story: _story });
 
-							case 7:
-								_context.next = 9;
+							case 8:
+								_context.next = 10;
 								return superagent.get('http://localhost:3000/api').then(function (res) {
 									return res.body;
 								});
 
-							case 9:
+							case 10:
 								_ref3 = _context.sent;
 								story = _ref3.story;
-								return _context.abrupt('return', { list: list });
 
-							case 12:
+								console.log("i am here");
+								console.log(story);
+								return _context.abrupt('return', { story: story });
+
+							case 15:
 							case 'end':
 								return _context.stop();
 						}
@@ -107,8 +118,8 @@ var _class = function (_React$Component) {
 	(0, _createClass3.default)(_class, [{
 		key: 'render',
 		value: function render() {
-			var req = this.props.req;
-			return _react2.default.createElement('div', null, _react2.default.createElement('h1', null, 'Hey'), _react2.default.createElement('p', null, 'These are the props', _react2.default.createElement('i', null, req)));
+			var story = this.props.story;
+			return _react2.default.createElement('div', null, _react2.default.createElement('h1', null, 'This is the story'), story && _react2.default.createElement('div', null, _react2.default.createElement('h1', null, story.title), _react2.default.createElement('p', null, story.story)));
 		}
 	}]);
 

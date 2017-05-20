@@ -1,6 +1,6 @@
 webpackHotUpdate(6,{
 
-/***/ 562:
+/***/ 563:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -42,9 +42,16 @@ var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _superagent = __webpack_require__(565);
+
+var superagent = _interopRequireWildcard(_superagent);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // install superagent and check what it does, install url-parse to get host and then append host to superagent to see if it still works.
+//add superagent route which receives id and then fetches that according to mongdb
 
 var _class = function (_React$Component) {
 	(0, _inherits3.default)(_class, _React$Component);
@@ -63,32 +70,36 @@ var _class = function (_React$Component) {
 						switch (_context.prev = _context.next) {
 							case 0:
 								if (!req) {
-									_context.next = 7;
+									_context.next = 8;
 									break;
 								}
 
 								db = req.db;
 								_context.next = 4;
-								return db.collection('posts').find({ "_id": id }).toArray();
+								return db.collection('posts').find({ "ObjectId": id }).toArray();
 
 							case 4:
 								_story = _context.sent;
 
 								console.log(_story);
-								return _context.abrupt('return', _story);
+								console.log("i am here");
+								return _context.abrupt('return', { story: _story });
 
-							case 7:
-								_context.next = 9;
+							case 8:
+								_context.next = 10;
 								return superagent.get('http://localhost:3000/api').then(function (res) {
 									return res.body;
 								});
 
-							case 9:
+							case 10:
 								_ref3 = _context.sent;
 								story = _ref3.story;
-								return _context.abrupt('return', { list: list });
 
-							case 12:
+								console.log("i am here");
+								console.log(story);
+								return _context.abrupt('return', { story: story });
+
+							case 15:
 							case 'end':
 								return _context.stop();
 						}
@@ -113,8 +124,8 @@ var _class = function (_React$Component) {
 	(0, _createClass3.default)(_class, [{
 		key: 'render',
 		value: function render() {
-			var req = this.props.req;
-			return _react2.default.createElement('div', null, _react2.default.createElement('h1', null, 'Hey'), _react2.default.createElement('p', null, 'These are the props', _react2.default.createElement('i', null, req)));
+			var story = this.props.story;
+			return _react2.default.createElement('div', null, _react2.default.createElement('h1', null, 'This is the story'), story && _react2.default.createElement('div', null, _react2.default.createElement('h1', null, story.title), _react2.default.createElement('p', null, story.story)));
 		}
 	}]);
 
@@ -152,4 +163,4 @@ exports.default = _class;
 /***/ })
 
 })
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9zdG9yeS5qcz8wYjY3Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBTzs7Ozs7O0FBQ1A7Ozs7Ozs7OztRQUcrQjtRQUFZLFdBQVAsTUFBTzs7Ozs7Ozs7YUFDdEM7OztBQUNLOzthQUFNLElBQU47O2VBQ2EsR0FBRyxXQUFXLFNBQVMsS0FBSyxFQUFDLE9BQU0sTUFBSzs7WUFBdEQ7MEJBQ047O2dCQUFRLElBQUk7eUNBQ0w7Ozs7MEJBRXlCLElBQUksNkJBQ25DLEtBQUs7Z0JBQU8sSUFBSTtBQURJOzs7eUJBQWY7c0JBQUE7eUNBRUEsRUFBQyxNQUFEOzs7Ozs7Ozs7Ozs7Ozs7QUFFUjs7O2lCQUFZLE9BQU87c0NBQUE7OytIQUVsQjs7Ozs7MkJBRUE7T0FBTSxNQUFNLEtBQUssTUFDakI7VUFDQyxxQ0FDQyxnREFDQSxpREFBc0IsMERBQUksTUFHNUI7Ozs7O0VBeEIyQixnQkFBTSIsImZpbGUiOiI2LjliNGVjZmQ2NGE1OWQ1MmI1MmI5LmhvdC11cGRhdGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXHJcbi8vIGluc3RhbGwgc3VwZXJhZ2VudCBhbmQgY2hlY2sgd2hhdCBpdCBkb2VzLCBpbnN0YWxsIHVybC1wYXJzZSB0byBnZXQgaG9zdCBhbmQgdGhlbiBhcHBlbmQgaG9zdCB0byBzdXBlcmFnZW50IHRvIHNlZSBpZiBpdCBzdGlsbCB3b3Jrcy5cclxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgZXh0ZW5kcyBSZWFjdC5Db21wb25lbnR7XHJcblxyXG5cdHN0YXRpYyBhc3luYyBnZXRJbml0aWFsUHJvcHMoe3JlcSwgcXVlcnk6e2lkfX0pe1xyXG5cdFx0aWYocmVxKXtcclxuXHRcdFx0Y29uc3Qge2RifSA9IHJlcVxyXG5cdFx0XHRjb25zdCBzdG9yeSA9IGF3YWl0IGRiLmNvbGxlY3Rpb24oJ3Bvc3RzJykuZmluZCh7XCJfaWRcIjppZH0pLnRvQXJyYXkoKTtcclxuXHRcdFx0Y29uc29sZS5sb2coc3RvcnkpXHJcblx0XHRcdHJldHVybiBzdG9yeVx0XHRcdFx0XHJcblx0XHR9XHJcblx0XHRjb25zdCB7c3Rvcnl9ID0gYXdhaXQgc3VwZXJhZ2VudC5nZXQoJ2h0dHA6Ly9sb2NhbGhvc3Q6MzAwMC9hcGknKVxyXG5cdFx0XHQudGhlbihyZXMgPT4gcmVzLmJvZHkpXHJcblx0XHRyZXR1cm4ge2xpc3R9XHJcblx0fVxyXG5cdGNvbnN0cnVjdG9yKHByb3BzKSB7XHJcblx0ICBzdXBlcihwcm9wcyk7XHJcblx0fVxyXG5cdHJlbmRlcigpe1xyXG5cdFx0Y29uc3QgcmVxID0gdGhpcy5wcm9wcy5yZXFcclxuXHRcdHJldHVybihcclxuXHRcdFx0PGRpdj5cclxuXHRcdFx0XHQ8aDE+SGV5PC9oMT5cclxuXHRcdFx0XHQ8cD5UaGVzZSBhcmUgdGhlIHByb3BzPGk+e3JlcX08L2k+PC9wPlxyXG5cdFx0XHQ8L2Rpdj5cclxuXHRcdClcclxuXHR9XHJcbn1cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9wYWdlcy9zdG9yeS5qcz9lbnRyeSJdLCJzb3VyY2VSb290IjoiIn0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9wYWdlcy9zdG9yeS5qcz8wYjY3Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBTzs7OztBQUNBOztJQUFLOzs7Ozs7QUFDWjtBQUNBOzs7Ozs7Ozs7UUFHK0I7UUFBWSxXQUFQLE1BQU87Ozs7Ozs7O2FBQ3RDOzs7QUFDSzs7YUFBTSxJQUFOOztlQUNhLEdBQUcsV0FBVyxTQUFTLEtBQUssRUFBQyxZQUFXLE1BQUs7O1lBQTNEOzBCQUNOOztnQkFBUSxJQUNSO2dCQUFRLElBQUk7eUNBQ0wsRUFBQyxPQUFEOzs7OzBCQUV5QixJQUFJLDZCQUNuQyxLQUFLO2dCQUFPLElBQUk7QUFESTs7O3lCQUFmO3NCQUVOOztnQkFBUSxJQUNSO2dCQUFRLElBQUk7eUNBQ04sRUFBQyxPQUFEOzs7Ozs7Ozs7Ozs7Ozs7QUFFUjs7O2lCQUFZLE9BQU87c0NBQUE7OytIQUVsQjs7Ozs7MkJBRUE7T0FBTSxRQUFRLEtBQUssTUFDbkI7VUFDQyxxQ0FDQyxnREFDQywrQkFDQSxxQ0FDQywwQ0FBSyxZQUNMLDJDQUFJLFlBS1I7Ozs7O0VBaEMyQixnQkFBTSIsImZpbGUiOiI2LmUxODhlNGMzMjZkM2NmYzJkYjRhLmhvdC11cGRhdGUuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSAncmVhY3QnXHJcbmltcG9ydCAqIGFzIHN1cGVyYWdlbnQgZnJvbSAnc3VwZXJhZ2VudCdcclxuLy8gaW5zdGFsbCBzdXBlcmFnZW50IGFuZCBjaGVjayB3aGF0IGl0IGRvZXMsIGluc3RhbGwgdXJsLXBhcnNlIHRvIGdldCBob3N0IGFuZCB0aGVuIGFwcGVuZCBob3N0IHRvIHN1cGVyYWdlbnQgdG8gc2VlIGlmIGl0IHN0aWxsIHdvcmtzLlxyXG4vL2FkZCBzdXBlcmFnZW50IHJvdXRlIHdoaWNoIHJlY2VpdmVzIGlkIGFuZCB0aGVuIGZldGNoZXMgdGhhdCBhY2NvcmRpbmcgdG8gbW9uZ2RiXHJcbmV4cG9ydCBkZWZhdWx0IGNsYXNzIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50e1xyXG5cclxuXHRzdGF0aWMgYXN5bmMgZ2V0SW5pdGlhbFByb3BzKHtyZXEsIHF1ZXJ5OntpZH19KXtcclxuXHRcdGlmKHJlcSl7XHJcblx0XHRcdGNvbnN0IHtkYn0gPSByZXFcclxuXHRcdFx0Y29uc3Qgc3RvcnkgPSBhd2FpdCBkYi5jb2xsZWN0aW9uKCdwb3N0cycpLmZpbmQoe1wiT2JqZWN0SWRcIjppZH0pLnRvQXJyYXkoKTtcclxuXHRcdFx0Y29uc29sZS5sb2coc3RvcnkpXHJcblx0XHRcdGNvbnNvbGUubG9nKFwiaSBhbSBoZXJlXCIpXHJcblx0XHRcdHJldHVybiB7c3Rvcnl9XHRcdFx0XHRcclxuXHRcdH1cclxuXHRcdGNvbnN0IHtzdG9yeX0gPSBhd2FpdCBzdXBlcmFnZW50LmdldCgnaHR0cDovL2xvY2FsaG9zdDozMDAwL2FwaScpXHJcblx0XHRcdC50aGVuKHJlcyA9PiByZXMuYm9keSlcclxuXHRcdFx0Y29uc29sZS5sb2coXCJpIGFtIGhlcmVcIilcclxuXHRcdFx0Y29uc29sZS5sb2coc3RvcnkpXHJcblx0XHRyZXR1cm4ge3N0b3J5fVxyXG5cdH1cclxuXHRjb25zdHJ1Y3Rvcihwcm9wcykge1xyXG5cdCAgc3VwZXIocHJvcHMpO1xyXG5cdH1cclxuXHRyZW5kZXIoKXtcclxuXHRcdGNvbnN0IHN0b3J5ID0gdGhpcy5wcm9wcy5zdG9yeVxyXG5cdFx0cmV0dXJuKFxyXG5cdFx0XHQ8ZGl2PlxyXG5cdFx0XHRcdDxoMT5UaGlzIGlzIHRoZSBzdG9yeTwvaDE+XHJcblx0XHRcdFx0e3N0b3J5ICYmIFxyXG5cdFx0XHRcdFx0PGRpdj5cclxuXHRcdFx0XHRcdFx0PGgxPntzdG9yeS50aXRsZX08L2gxPlxyXG5cdFx0XHRcdFx0XHQ8cD57c3Rvcnkuc3Rvcnl9PC9wPlxyXG5cdFx0XHRcdFx0PC9kaXY+XHJcblx0XHRcdFx0fVxyXG5cdFx0XHQ8L2Rpdj5cclxuXHRcdClcclxuXHR9XHJcbn1cblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9wYWdlcy9zdG9yeS5qcz9lbnRyeSJdLCJzb3VyY2VSb290IjoiIn0=
