@@ -4,19 +4,13 @@ import * as superagent from 'superagent'
 //add superagent route which receives id and then fetches that according to mongdb
 export default class extends React.Component{
 
-	static async getInitialProps({req, query:{id}}){
-		if(req){
-			const {db} = req
-			const story = await db.collection('posts').find({"ObjectId":id}).toArray();
-			console.log(story)
-			console.log("i am here")
-			return {story}				
-		}
-		const {story} = await superagent.get('http://localhost:3000/api')
-			.then(res => res.body)
-			console.log("i am here")
-			console.log(story)
-		return {story}
+	static async getInitialProps({req, query:{id}}){	
+		const {story} = await superagent.get('http://localhost:3000/api/story')
+			.then((res) => {
+				console.log(res.body)
+				return res.body	
+			})
+			return {story}
 	}
 	constructor(props) {
 	  super(props);
