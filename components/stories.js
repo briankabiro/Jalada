@@ -3,9 +3,14 @@ import Link from 'next/link'
 
 export default class Stories extends Component{
 	static async getInitialProps ({req}){
-		const {db} = req
-		const list = await db.collection('posts').find().sort({ createdAt: -1}).toArray();
-		return {list}
+		if(req){
+			const {db} = req
+			const list = await db.collection('posts').find().sort({ createdAt: -1}).toArray();
+			return {list}			
+		}
+		 const { list } = await superagent.get('http://localhost:3000/api')
+     		 .then(res => res.body)
+    	return { list }
 	}
 	render(){
 		const list = this.props.list
