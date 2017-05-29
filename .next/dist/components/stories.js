@@ -46,6 +46,9 @@ var _link2 = _interopRequireDefault(_link);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _jsxFileName = 'C:\\Users\\user\\Desktop\\w3c\\Projects\\Jalada\\components\\stories.js';
+
+
 var Stories = function (_Component) {
 	(0, _inherits3.default)(Stories, _Component);
 
@@ -59,25 +62,77 @@ var Stories = function (_Component) {
 		key: 'render',
 		value: function render() {
 			var list = this.props.list;
-			return _react2.default.createElement('div', { className: 'container', 'data-jsx': 565090263
+			return _react2.default.createElement('div', { className: 'container', 'data-jsx': 565090263,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 18
+				}
 			}, _react2.default.createElement('h1', {
-				'data-jsx': 565090263
-			}, 'Stories'), _react2.default.createElement('div', { id: 'stories-list', 'data-jsx': 565090263
+				'data-jsx': 565090263,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 19
+				}
+			}, 'Stories'), _react2.default.createElement('div', { id: 'stories-list', 'data-jsx': 565090263,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 20
+				}
 			}, _react2.default.createElement('ul', {
-				'data-jsx': 565090263
+				'data-jsx': 565090263,
+				__source: {
+					fileName: _jsxFileName,
+					lineNumber: 21
+				}
 			}, list.map(function (story) {
-				return _react2.default.createElement(_link2.default, { prefetch: true, href: { pathname: 'story', query: { id: story._id } } }, _react2.default.createElement('div', { className: 'story', key: story._id, 'data-jsx': 565090263
+				return _react2.default.createElement(_link2.default, { prefetch: true, href: { pathname: 'story', query: { id: story._id } }, __source: {
+						fileName: _jsxFileName,
+						lineNumber: 24
+					}
+				}, _react2.default.createElement('div', { className: 'story', key: story._id, 'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 25
+					}
 				}, _react2.default.createElement('h2', {
-					'data-jsx': 565090263
+					'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 26
+					}
 				}, story.title), _react2.default.createElement('p', {
-					'data-jsx': 565090263
-				}, story.story), _react2.default.createElement('div', { className: 'details-div', 'data-jsx': 565090263
-				}, _react2.default.createElement('div', { id: 'picture-div', 'data-jsx': 565090263
-				}), _react2.default.createElement('div', { id: 'name-and-time-div', 'data-jsx': 565090263
+					'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 27
+					}
+				}, story.story), _react2.default.createElement('div', { className: 'details-div', 'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 28
+					}
+				}, _react2.default.createElement('div', { id: 'picture-div', 'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 29
+					}
+				}), _react2.default.createElement('div', { id: 'name-and-time-div', 'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 30
+					}
 				}, _react2.default.createElement('span', {
-					'data-jsx': 565090263
+					'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 31
+					}
 				}, story.author), _react2.default.createElement('span', {
-					'data-jsx': 565090263
+					'data-jsx': 565090263,
+					__source: {
+						fileName: _jsxFileName,
+						lineNumber: 32
+					}
 				}, story.time, 'h ago // ', story.time, ' min read')))));
 			}))), _react2.default.createElement(_style2.default, {
 				styleId: 565090263,
@@ -87,8 +142,8 @@ var Stories = function (_Component) {
 	}], [{
 		key: 'getInitialProps',
 		value: function () {
-			var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref2) {
-				var req = _ref2.req;
+			var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(_ref) {
+				var req = _ref.req;
 
 				var db, _list, _ref3, list;
 
@@ -129,7 +184,7 @@ var Stories = function (_Component) {
 			}));
 
 			function getInitialProps(_x) {
-				return _ref.apply(this, arguments);
+				return _ref2.apply(this, arguments);
 			}
 
 			return getInitialProps;

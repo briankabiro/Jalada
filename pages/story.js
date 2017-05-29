@@ -9,17 +9,17 @@ export default class extends React.Component{
 		if(req){
 			const { db } = req
 			const id = query.id
-			console.log('query .id ', query.id)
-			const story = await db.collection('posts').find({"_id":ObjectId(id)}).toArray();
+			const {story} = await db.collection('posts').find({"_id":ObjectId(id)}).toArray();
+			return {story}
+		}else{
+			const {story} = await superagent.post('http://localhost:3000/api/story', query.id)
+				.then((res) => {
+					console.log("this is the body",res.body)
+					return res.body	
+				})
 			return {story}
 		}
-		const {story} = await superagent.post('http://localhost:3000/api/story', query.id)
-			.then((res) => {
-				console.log("this is the body",res.body)
-				return res.body	
-			})
-			return {story}
-	}
+		}
 	constructor(props) {
 	  super(props);
 	}
